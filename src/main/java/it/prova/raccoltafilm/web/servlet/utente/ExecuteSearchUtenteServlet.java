@@ -31,20 +31,20 @@ public class ExecuteSearchUtenteServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String nomeParam = request.getParameter("nome");
 		String cognomeParam = request.getParameter("cognome");
-		String usenrameParam = request.getParameter("nickName");
-		String dataCreazioneParam = request.getParameter("dataDiNascita");
+		String usernameParam = request.getParameter("username");
+		String dataCreazioneParam = request.getParameter("dateCreated");
 
-		Utente example = new Utente(nomeParam, cognomeParam, usenrameParam, UtilityForm.parseDateArrivoFromString(dataCreazioneParam));
+		Utente example = new Utente(usernameParam, nomeParam, cognomeParam, UtilityForm.parseDateArrivoFromString(dataCreazioneParam));
 
 		try {
 			request.setAttribute("utenti_list_attribute", MyServiceFactory.getUtenteServiceInstance().findByExample(example));
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("errorMessage", "Attenzione si è verificato un errore.");
-			request.getRequestDispatcher("/utente/search.jsp").forward(request, response);
+			request.getRequestDispatcher("search.jsp").forward(request, response);
 			return;
 		}
-		response.sendRedirect("ExecuteListUtentiServlet?operationResult=SUCCESS");
+		request.getRequestDispatcher("list.jsp").forward(request, response);
 	}
 
 }

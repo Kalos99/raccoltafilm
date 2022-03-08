@@ -19,6 +19,6 @@ public class PrepareSearchUtenteServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.getRequestDispatcher("/utente/search.jsp").forward(request, response);
+		request.getRequestDispatcher("search.jsp").forward(request, response);
 	}
 }

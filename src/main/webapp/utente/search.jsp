@@ -28,8 +28,12 @@
 				    </div>
 				    <div class='card-body'>
 		
-							<form method="post" action="ExecuteSearchUtenteServlet" class="row g-3" >
+							<form method="post" action="${pageContext.request.contextPath }/utente/ExecuteSearchUtenteServlet" class="row g-3" >
 							
+								<div class="col-md-6">
+									<label for="username" class="form-label">Username </label>
+									<input type="text" class="form-control" name="username" id="username" placeholder="Inserire lo username"  >
+								</div>
 							
 								<div class="col-md-6">
 									<label for="nome" class="form-label">Nome </label>
@@ -40,14 +44,9 @@
 									<label for="cognome" class="form-label">Cognome </label>
 									<input type="text" name="cognome" id="cognome" class="form-control" placeholder="Inserire il cognome"  >
 								</div>
-							
-								<div class="col-md-6">
-									<label for="nickName" class="form-label">Username </label>
-									<input type="text" class="form-control" name="username" id="username" placeholder="Inserire lo username"  >
-								</div>
 								
 								<div class="col-md-3">
-									<label for="dataDiNascita" class="form-label">Data creazione utente </label>
+									<label for="dateCreated" class="form-label">Data creazione utente </label>
                         			<input class="form-control" id="dateCreated" type="date" placeholder="dd/MM/yy"
                             			title="formato : gg/mm/aaaa"  name="dateCreated"   >
 								</div>

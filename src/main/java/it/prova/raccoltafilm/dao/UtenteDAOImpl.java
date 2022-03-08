@@ -121,11 +121,11 @@ public class UtenteDAOImpl implements UtenteDAO {
 			paramaterMap.put("username", "%" + example.getUsername() + "%");
 		}
 		if (example.getDateCreated() != null) {
-			whereClauses.add("u.dateCreated >= :dateCreated  ");
-			paramaterMap.put("dateCreated ", example.getDateCreated());
+			whereClauses.add(" u.dateCreated >= :dateCreated  ");
+			paramaterMap.put("dateCreated", example.getDateCreated());
 		}
 		
-		queryBuilder.append(!whereClauses.isEmpty()?" and ":"");
+		queryBuilder.append(!whereClauses.isEmpty()? " and " : "");
 		queryBuilder.append(StringUtils.join(whereClauses, " and "));
 		TypedQuery<Utente> typedQuery = entityManager.createQuery(queryBuilder.toString(), Utente.class);
 
