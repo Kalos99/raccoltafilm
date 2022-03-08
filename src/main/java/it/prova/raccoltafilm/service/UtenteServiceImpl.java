@@ -5,8 +5,8 @@ import java.util.Optional;
 
 import javax.persistence.EntityManager;
 
+import it.prova.raccoltafilm.dao.RuoloDAO;
 import it.prova.raccoltafilm.dao.UtenteDAO;
-import it.prova.raccoltafilm.model.Regista;
 import it.prova.raccoltafilm.model.Ruolo;
 import it.prova.raccoltafilm.model.Utente;
 import it.prova.raccoltafilm.web.listener.LocalEntityManagerFactoryListener;
@@ -14,10 +14,16 @@ import it.prova.raccoltafilm.web.listener.LocalEntityManagerFactoryListener;
 public class UtenteServiceImpl implements UtenteService {
 
 	private UtenteDAO utenteDAO;
+	private RuoloDAO ruoloDAO;
 
 	@Override
 	public void setUtenteDAO(UtenteDAO utenteDAO) {
 		this.utenteDAO = utenteDAO;
+	}
+	
+	@Override
+	public void setRuoloDAO(RuoloDAO ruoloDAO) {
+		this.ruoloDAO = ruoloDAO;
 	}
 
 	@Override
@@ -128,6 +134,7 @@ public class UtenteServiceImpl implements UtenteService {
 
 			// uso l'injection per il dao
 			utenteDAO.setEntityManager(entityManager);
+			ruoloDAO.setEntityManager(entityManager);
 
 			// 'attacco' alla sessione di hibernate i due oggetti
 			// così jpa capisce che se è già presente quel ruolo non deve essere inserito
@@ -213,5 +220,4 @@ public class UtenteServiceImpl implements UtenteService {
 			LocalEntityManagerFactoryListener.closeEntityManager(entityManager);
 		}
 	}
-
 }

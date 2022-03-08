@@ -2,8 +2,8 @@ package it.prova.raccoltafilm.service;
 
 import java.util.List;
 
+import it.prova.raccoltafilm.dao.RuoloDAO;
 import it.prova.raccoltafilm.dao.UtenteDAO;
-import it.prova.raccoltafilm.model.Regista;
 import it.prova.raccoltafilm.model.Ruolo;
 import it.prova.raccoltafilm.model.Utente;
 
@@ -29,5 +29,7 @@ public interface UtenteService  {
 
 	//per injection
 	public void setUtenteDAO(UtenteDAO utenteDAO);
+	
+	public void setRuoloDAO(RuoloDAO ruoloDAO);
 
 }

@@ -28,6 +28,7 @@
               <li><a class="dropdown-item" href="${pageContext.request.contextPath}/PrepareInsertFilmServlet">Inserisci Film</a></li>
               <c:if test="${ userInfo.isAdmin() }">
               		<li><a class="dropdown-item" href="${pageContext.request.contextPath}/utente/PrepareSearchUtenteServlet">Ricerca utenti</a></li>
+              		<li><a class="dropdown-item" href="${pageContext.request.contextPath}/utente/PrepareInsertUtenteServlet">Inserisci nuovo utente</a></li>
               </c:if>
             </ul> 
           </li>   

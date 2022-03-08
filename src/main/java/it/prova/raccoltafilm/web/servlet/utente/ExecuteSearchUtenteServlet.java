@@ -44,7 +44,7 @@ public class ExecuteSearchUtenteServlet extends HttpServlet {
 			request.getRequestDispatcher("search.jsp").forward(request, response);
 			return;
 		}
-		request.getRequestDispatcher("list.jsp").forward(request, response);
+		request.getRequestDispatcher("/utente/list.jsp").forward(request, response);
 	}
 
 }

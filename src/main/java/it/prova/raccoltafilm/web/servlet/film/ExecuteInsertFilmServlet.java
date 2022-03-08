@@ -27,8 +27,7 @@ public class ExecuteInsertFilmServlet extends HttpServlet {
 
 		// preparo un bean (che mi serve sia per tornare in pagina
 		// che per inserire) e faccio il binding dei parametri
-		Film filmInstance = UtilityForm.createFilmFromParams(titoloParam, genereParam, minutiDurataParam,
-				dataPubblicazioneParam, registaIdParam);
+		Film filmInstance = UtilityForm.createFilmFromParams(titoloParam, genereParam, minutiDurataParam, dataPubblicazioneParam, registaIdParam);
 
 		try {
 			// se la validazione non risulta ok

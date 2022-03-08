@@ -27,7 +27,11 @@ public class MyServiceFactory {
 		if (UTENTE_DAO_INSTANCE == null)
 			UTENTE_DAO_INSTANCE = new UtenteDAOImpl();
 
+		if (RUOLO_DAO_INSTANCE == null)
+			RUOLO_DAO_INSTANCE = new RuoloDAOImpl();
+
 		UTENTE_SERVICE_INSTANCE.setUtenteDAO(UTENTE_DAO_INSTANCE);
+		UTENTE_SERVICE_INSTANCE.setRuoloDAO(RUOLO_DAO_INSTANCE);
 		return UTENTE_SERVICE_INSTANCE;
 	}
 

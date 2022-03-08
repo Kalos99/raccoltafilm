@@ -41,7 +41,7 @@ public class ExecuteSearchFilmServlet extends HttpServlet {
 			return;
 		}
 
-		response.sendRedirect("ExecuteListRegistaServlet?operationResult=SUCCESS");
+		request.getRequestDispatcher("/film/list.jsp").forward(request, response);
 	}
 
 
