@@ -64,9 +64,9 @@
 											<td><fmt:formatDate type = "date" value = "${utenteItem.dateCreated}" /></td>
 											<td>${utenteItem.stato }</td>
 											<td>
-												<a class="btn  btn-sm btn-outline-secondary" href="${ pageContext.request.contextPath }/ExecuteVisualizzaUtenteServlet?idUtente=${utenteItem.id }">Visualizza</a>
+												<a class="btn  btn-sm btn-outline-secondary" href="${ pageContext.request.contextPath }/utente/ExecuteVisualizzaUtenteServlet?idUtente=${utenteItem.id }">Visualizza</a>
 												<a class="btn  btn-sm btn-outline-primary ml-2 mr-2" href="${ pageContext.request.contextPath }/PrepareEditUtenteServlet?idUtente=${utenteItem.id }">Edit</a>
-												<a class="btn btn-outline-danger btn-sm" href="${ pageContext.request.contextPath }/PrepareDeleteUtenteServlet?idUtente=${utenteItem.id }">Delete</a>
+												<a class="btn btn-outline-danger btn-sm" href="${ pageContext.request.contextPath }/utente/PrepareDeleteUtenteServlet?idUtente=${utenteItem.id }">Delete</a>
 											</td>
 										</tr>
 									</c:forEach>
