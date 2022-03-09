@@ -220,4 +220,24 @@ public class UtenteServiceImpl implements UtenteService {
 			LocalEntityManagerFactoryListener.closeEntityManager(entityManager);
 		}
 	}
+
+	@Override
+	public Utente caricaSingoloUtenteConRuoli(Long id) throws Exception {
+		// questo è come una connection
+		EntityManager entityManager = LocalEntityManagerFactoryListener.getEntityManager();
+
+		try {
+			// uso l'injection per il dao
+			utenteDAO.setEntityManager(entityManager);
+
+			// eseguo quello che realmente devo fare
+			return utenteDAO.findOneFetchingRuoli(id);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			LocalEntityManagerFactoryListener.closeEntityManager(entityManager);
+		}
+	}
 }

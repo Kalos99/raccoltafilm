@@ -41,8 +41,8 @@ public class ExecuteInsertUtenteServlet extends HttpServlet {
 			// se la validazione non risulta ok
 			if (!UtilityForm.validateUtenteBean(utenteInstance)) {
 				request.setAttribute("insert_utente_attr", utenteInstance);
+				request.setAttribute("mappaRuoliConSelezionati_attr", UtilityForm.buildCheckedRolesFromRolesAlreadyInUtente(MyServiceFactory.getRuoloServiceInstance().listAll(), utenteInstance.getRuoli()));
 				// questo mi serve per la select di registi in pagina
-				request.setAttribute("ruoli_list_attribute", MyServiceFactory.getRuoloServiceInstance().listAll());
 				request.setAttribute("errorMessage", "Attenzione sono presenti errori di validazione");
 				request.getRequestDispatcher("/utente/insert.jsp").forward(request, response);
 				return;

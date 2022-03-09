@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import it.prova.raccoltafilm.model.Utente;
 import it.prova.raccoltafilm.service.MyServiceFactory;
+import it.prova.raccoltafilm.utility.UtilityForm;
 
 @WebServlet("/utente/PrepareInsertUtenteServlet")
 public class PrepareInsertUtenteServlet extends HttpServlet {
@@ -23,7 +24,7 @@ public class PrepareInsertUtenteServlet extends HttpServlet {
 			//metto un bean 'vuoto' in request perché per la pagina risulta necessario
 			request.setAttribute("insert_utente_attr", new Utente());
 			// questo mi serve per la select di registi in pagina
-			request.setAttribute("ruoli_list_attribute", MyServiceFactory.getRuoloServiceInstance().listAll());
+			request.setAttribute("mappaRuoliConSelezionati_attr", UtilityForm.buildCheckedRolesForPages(MyServiceFactory.getRuoloServiceInstance().listAll(), null));
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("errorMessage", "Attenzione si è verificato un errore.");

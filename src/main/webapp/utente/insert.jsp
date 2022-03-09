@@ -54,13 +54,15 @@
 									<label for="cognome" class="form-label">Cognome</label>
 									<input type="text" name="cognome" id="cognome" class="form-control" placeholder="Inserire il cognome" value="${insert_utente_attr.cognome }">
 								</div>
-  								
-								<c:forEach items="${ruoli_list_attribute }" var="ruoloItem">
-							       <div class="form-check">
-							         <input class="form-check-input" type="checkbox" value="${ ruoloItem.id }" id="ruoli-${ ruoloItem.id }" name="ruoli">
-							         <label class="form-check-label" for="ruoli-${ ruoloItem.id }">${ruoloItem.codice}</label>
-							       </div>
-							      </c:forEach>
+							      
+							      <c:forEach items="${mappaRuoliConSelezionati_attr}" var="ruoloEntry">
+										<div class="form-check">
+											  <input class="form-check-input" name="ruoli" type="checkbox" value="${ruoloEntry.key.id}" id="ruoli-${ruoloEntry.key.id}" ${ruoloEntry.value?'checked':'' }>
+											  <label class="form-check-label" for="ruoli-${ruoloEntry.key.id}" >
+											    ${ruoloEntry.key.codice}
+											  </label>
+										</div>
+								  	</c:forEach>
 								
 								<div class="col-12">
 									<button type="submit" name="submit" value="submit" id="submit" class="btn btn-primary">Conferma</button>

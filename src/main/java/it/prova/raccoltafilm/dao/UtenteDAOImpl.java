@@ -136,4 +136,20 @@ public class UtenteDAOImpl implements UtenteDAO {
 		return typedQuery.getResultList();
 	}
 
+	@Override
+	public Utente findOneFetchingRuoli(Long id) throws Exception {
+		TypedQuery<Utente> query = entityManager
+				.createQuery("select u FROM Utente u left join fetch u.ruoli r where u.id = :idUtente", Utente.class);
+		query.setParameter("idUtente", id);
+		return query.getResultList().stream().findFirst().orElse(null);
+	}
+
+	@Override
+	public void disableUser(Long id) throws Exception {
+		if (id == null) {
+			throw new Exception("Problema valore in input");
+		}
+		Utente utenteInstance = entityManager.find(Utente.class, id);
+		utenteInstance.setStato(StatoUtente.DISABILITATO);
+	}
 }

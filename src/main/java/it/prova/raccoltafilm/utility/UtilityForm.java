@@ -2,10 +2,14 @@ package it.prova.raccoltafilm.utility;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
@@ -104,5 +108,40 @@ public class UtilityForm {
 		} catch (ParseException e) {
 			return null;
 		}
+	}
+	
+	public static Map<Ruolo, Boolean> buildCheckedRolesForPages(List<Ruolo> listaTotaleRuoli,
+			String[] ruoliFromParams) {
+		Map<Ruolo, Boolean> result = new TreeMap<>();
+
+		// converto array di string in List di Long
+		List<Long> ruoliIdConvertiti = new ArrayList<>();
+		for (String stringItem : ruoliFromParams != null ? ruoliFromParams : new String[] {}) {
+			ruoliIdConvertiti.add(Long.valueOf(stringItem));
+		}
+
+		for (Ruolo ruoloItem : listaTotaleRuoli) {
+			result.put(ruoloItem, ruoliIdConvertiti.contains(ruoloItem.getId()));
+		}
+
+		return result;
+	}
+	
+	public static Map<Ruolo, Boolean> buildCheckedRolesFromRolesAlreadyInUtente(List<Ruolo> listaTotaleRuoli,
+			Set<Ruolo> listaRuoliPossedutiDaUtente) {
+		Map<Ruolo, Boolean> result = new TreeMap<>();
+
+		// converto array di ruoli in List di Long
+		List<Long> ruoliConvertitiInIds = new ArrayList<>();
+		for (Ruolo ruoloDiUtenteItem : listaRuoliPossedutiDaUtente != null ? listaRuoliPossedutiDaUtente
+				: new ArrayList<Ruolo>()) {
+			ruoliConvertitiInIds.add(ruoloDiUtenteItem.getId());
+		}
+
+		for (Ruolo ruoloItem : listaTotaleRuoli) {
+			result.put(ruoloItem, ruoliConvertitiInIds.contains(ruoloItem.getId()));
+		}
+
+		return result;
 	}
 }
